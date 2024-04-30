@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Data</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <style>
+        body, h1, form, table {
+            font-size: 20px; 
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Data</h1>
+    <form method="post">
+        <label for="ticker">Enter Stock Ticker:</label>
+        <input type="text" id="ticker" name="ticker" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if ticker %}
+        <h2>Data for: {{ ticker }}</h2>
+    {% endif %}
+    {% for table in tables %}
+        {{ titles[loop.index0] | safe }}
+        {{ table | safe }}
+    {% endfor %}
+</body>
+</html>
